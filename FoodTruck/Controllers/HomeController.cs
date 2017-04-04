@@ -78,10 +78,8 @@ namespace FoodTruck.Controllers
             return new JsonResult { Data = new { status = status } };
         }
 
-        public ActionResult About()
+        public ActionResult Menu()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
