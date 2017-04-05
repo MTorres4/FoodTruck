@@ -1,6 +1,12 @@
-﻿@{
+﻿@model IEnumerable<FoodTruck.Models.TweetViewModel>
+
+
+@{
     ViewBag.Title = "Home Page";
 }
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <div class="jumbotron">
     <h1>ASP.NET</h1>
@@ -74,9 +80,17 @@
                 </div>
             </div>*@
     </div>
+
 </div>
 @* CALENDAR END HERE *@
-
+<div>
+<i class="fa fa-twitter" style="font-size:36px"></i>
+@foreach (var item in Model)
+{
+    <p><b>@item.Date</b></p>
+    <p><b>@item.Text</b></p>
+}
+</div>
 @* CSS *@
 <link href="~/Content/fullcalendar.css" rel="stylesheet" />
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />

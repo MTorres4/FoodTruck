@@ -1,8 +1,11 @@
-﻿using System;
+﻿using FoodTruck.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Tweetinvi;
+using Tweetinvi.Models;
 
 namespace FoodTruck.Controllers
 {
@@ -10,7 +13,12 @@ namespace FoodTruck.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            Auth.SetUserCredentials("uCu6RTd7IiP6ZaoNNg3vZggOK", "2t25i0TIj52oo10KtEQ4T0QaFurJVxqIaeymx56lguhYT3rn0y", "847438635699814402-eGKgSfcnbe9hODxFMdZPANRsJv247Up", "pxwLkwZDepBVJcfMVWOLBPAyXGrK5ZD2NDtZK1YRM6YXG");
+            var user = Tweetinvi.User.GetUserFromScreenName("SupermansTruck");
+            var userIdentifier = new UserIdentifier("SupermansTruck");
+            var tweets = Timeline.GetUserTimeline(userIdentifier);
+            var model = tweets.Select(x => new TweetViewModel() { Date = x.CreatedAt, Text = x.FullText }).ToList();
+            return View(model);
         }
 
         public JsonResult GetEvents()
