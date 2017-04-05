@@ -24,5 +24,14 @@ namespace FoodTruck.Controllers
             return View();
         }
 
+        public ActionResult Success()
+        {
+            return View();
+        }
+
+        public ActionResult Failure()
+        {
+            return View();
+        }
     }
 }

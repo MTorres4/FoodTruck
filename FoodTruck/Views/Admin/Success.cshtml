@@ -1,0 +1,11 @@
+﻿
+@{
+    ViewBag.Title = "Success";
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+}
+
+<h2>Success</h2>
+
+<span class="glyphicon glyphicon-thumbs-up"></span>
+
+<button type="button" class="btn btn-primary" onclick="window.location.href='@Url.Action("PayPal", "Admin")';">Come Again</button>

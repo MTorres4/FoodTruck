@@ -7,3 +7,16 @@
 <h2>PayPal</h2>
 
 @*<iframe src="https://paypalmanager.sandbox.paypal.com/login.do" height="800" width="1100" style="border:none;"></iframe>*@
+
+
+<div class="form-group">
+    <div class="col-md-offset-2" col-md-5>
+        <span class="glyphicon glyphicon-cloud"></span>
+        <a target="_blank" class="btn btn-default" href="https://paypalmanager.sandbox.paypal.com/login.do"> Sandbox Admin Login</a>
+    </div>
+</div>
+
+
+
+@Html.ActionLink("Pay Direct with Credit Card", "PaymentWithCreditCard", "PayPal")<br>
+@Html.ActionLink("Pay  with PayPal Account", "PaymentWithPayPal", "PayPal")

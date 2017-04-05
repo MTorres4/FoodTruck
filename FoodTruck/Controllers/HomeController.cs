@@ -83,10 +83,8 @@ namespace FoodTruck.Controllers
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult Opportunities()
         {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
     }

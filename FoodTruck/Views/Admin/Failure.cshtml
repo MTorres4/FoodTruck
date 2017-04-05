@@ -1,0 +1,11 @@
+﻿
+@{
+    ViewBag.Title = "Failure";
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+}
+
+<h2>Failure</h2>
+
+<span class="glyphicon glyphicon-thumbs-down"></span>
+
+<button type="button" class="btn btn-primary" onclick="window.location.href='@Url.Action("PayPal", "Admin")';">Try Again</button>
