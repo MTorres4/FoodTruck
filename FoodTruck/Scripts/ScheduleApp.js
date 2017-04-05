@@ -1,5 +1,5 @@
-﻿var app = angular.module('myApp', ['ui.calendar', 'ui.bootstrap']); // added u.bootstrap for modal dialog
-app.controller('myNgController', ['$scope', '$http', 'uiCalendarConfig', '$uibModal', function ($scope, $http, uiCalendarConfig, $uibModal) {
+﻿var app = angular.module('myAppz', ['ui.calendar', 'ui.bootstrap']); // added u.bootstrap for modal dialog
+app.controller('myNgControllerz', ['$scope', '$http', 'uiCalendarConfig', '$uibModal', function ($scope, $http, uiCalendarConfig, $uibModal) {
 
     $scope.SelectedEvent = null;
     var isFirstTime = true;
@@ -47,7 +47,7 @@ app.controller('myNgController', ['$scope', '$http', 'uiCalendarConfig', '$uibMo
     //});
     function populate() {
         clearCalendar();
-        $http.get('/home/getevents', {
+        $http.get('/Employee/getevents', {
             cache: false,
             params: {}
         }).then(function (data) {
@@ -73,7 +73,7 @@ app.controller('myNgController', ['$scope', '$http', 'uiCalendarConfig', '$uibMo
             editable: false,
             displayEventTime: true,
             header: {
-                left: 'month,agendaWeek,agendaDay',
+                left: 'month',
                 center: 'title',
                 right: 'today prev,next'
             },
@@ -140,7 +140,7 @@ app.controller('myNgController', ['$scope', '$http', 'uiCalendarConfig', '$uibMo
                     //Save here
                     $http({
                         method: 'POST',
-                        url: '/home/SaveEvent',
+                        url: '/Employee/SaveEvent',
                         data: $scope.NewEvent
                     }).then(function (response) {
                         if (response.data.status) {
@@ -152,7 +152,7 @@ app.controller('myNgController', ['$scope', '$http', 'uiCalendarConfig', '$uibMo
                     //Delete here $http({
                     $http({
                         method: 'POST',
-                        url: '/home/DeleteEvent',
+                        url: '/Employee/DeleteEvent',
                         data: { 'eventID': $scope.NewEvent.EventID }
                     }).then(function (response) {
                         if (response.data.status) {
