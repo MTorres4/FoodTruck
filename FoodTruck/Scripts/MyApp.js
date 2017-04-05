@@ -71,9 +71,9 @@ app.controller('myNgController', ['$scope', '$http', 'uiCalendarConfig', '$uibMo
         calendar: {
             height: 450,
             editable: false,
-            displayEventTime: true,
+            displayEventTime: false,
             header: {
-                left: 'month,agendaWeek,agendaDay',
+                left: 'month',
                 center: 'title',
                 right: 'today prev,next'
             },

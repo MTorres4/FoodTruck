@@ -24,7 +24,7 @@ namespace FoodTruck
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
+                      "~/Content/bootstrap-united.css",
                       "~/Content/site.css",
                       "~/Content/menu.css"));
         }

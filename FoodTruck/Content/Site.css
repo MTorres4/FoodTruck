@@ -22,3 +22,14 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.jumbotron{
+    background-image: url("Images/OldWorld3rd.JPG");
+    height: 500px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-bottom: 2px solid #fff;
+}
+.jumbotron h1{
+    color: #990033;
+}

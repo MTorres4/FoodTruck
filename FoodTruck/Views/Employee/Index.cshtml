@@ -4,5 +4,143 @@
     Layout = "~/Views/Employee/_EmployeeLayout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Mil-Town Eatery Employee Login Page</h2>
 
+<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="container text-center">
+    <h1>Mil-Town Eatery</h1>
+    <p>A Taste of Milwaukee on Wheels</p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Come Join Us!</h2>
+        <p>
+            Grand Opening: 4/5/2017!!
+        </p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Check-out our Twitter! &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Get more Mil-Town Eatery!</h2>
+        <p>Share your pictures of Milwaukee on Twitter!</p>
+    </div>
+    <div class="col-md-4">
+        <h2>Want to make some extra cash?</h2>
+        <p>Check-out our current openings!!</p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    </div>
+</div>
+<h2>Check-out this months specials and upcoming events! </h2>
+<div ng-app="myApp" ng-controller="myNgController">
+    @if (User.IsInRole("Admin"))
+    {
+        <script type="text/ng-template" id="modalContent.html">
+            <div class="modal-header">
+                <h3 class="modal-title">Events</h3>
+            </div>
+            <div class="modal-body">
+                <div class="error">{{Message}}</div>
+                <div class="form-group">
+                    <label>Event Title :</label>
+                    <input type="text" ng-model="NewEvent.Title" autofocus class="form-control" required />
+                </div>
+                <div class="form-group">
+                    <label>Description :</label>
+                    <textarea ng-model="NewEvent.Description" autofocus class="form-control"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Time Slot :</label>
+                    <span>
+                        {{NewEvent.StartAt}} - {{NewEvent.EndAt}}
+                    </span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="button" ng-click="ok()">Save</button>
+                <button class="btn btn-danger" type="button" ng-show="NewEvent.EventID > 0" ng-click="delete()">Delete </button>
+                <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+            </div>
+        </script>
+    }
+    <div class="row">
+        <div class="col-md-8">
+            <div id="calendar" ui-calendar="uiConfig.calendar" ng-model="eventSources" calendar="myCalendar"></div>
+        </div>
+
+        <div class="col-md-4">
+            <div ng-show="SelectedEvent" class="alert alert-success" style="margin-top:50px">
+                <h2 style="margin-top:0px"> Selected Event:</h2>
+                <h3 style="color:#A9A50E">{{SelectedEvent.title}}</h3>
+                <p>{{SelectedEvent.description}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-6">
+    <h2>CurrentLocation</h2>
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <style>
+            #map {
+                height: 200px;
+                width: 60%;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="map"></div>
+        <script>
+                function initMap() {
+                    var base = { lat: 43.04157499999999, lng: -87.92380689999999 };
+                    map = new google.maps.Map(document.getElementById('map'), {
+                        zoom: 15,
+                        center: base
+                    });
+                    var marker = new google.maps.Marker({
+                        position: base,
+                        title: 'Milwaukee Court House',
+                        map: map
+                    })
+                    marker.setMap(map);
+                }
+
+                var map;
+
+
+
+        </script>
+        <script async defer
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3dFT5gor1bg311IQrGWR7hTse_Vjnhvw&callback=initMap">
+        </script>
+    </body>
+</html>
+</div>
+</div>
+
+
+
+
+
+@* CSS *@
+<link href="~/Content/fullcalendar.css" rel="stylesheet" />
+@* JS *@
+<script src="~/Scripts/moment.js"></script>
+<script src="~/Scripts/jquery-1.11.3.js"></script>
+@*<script src="~/Scripts/angular.js"></script>*@
+@* Will use latest angularjs *@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.js"></script>
+<script src="~/Scripts/calendar.js"></script>
+<script src="~/Scripts/fullcalendar.js"></script>
+<script src="~/Scripts/gcal.js"></script>
+@* OUR ANGULAR COMPONENTs *@
+<script src="~/Scripts/MyApp.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.3.2/ui-bootstrap-tpls.min.js"></script>
+<style>
+    .error {
+        color: red;
+    }
+</style>
